@@ -1,0 +1,25 @@
+<header class="p-1 px-3 flex items-center">
+  <div class="flex-1">
+    <img src="assets/logo.png" alt="" class="max-w-17" />
+  </div>
+  <div class="w-100 mx-2">
+    <p-iconfield>
+      <input type="text" fluid  placeholder="Search Task" pInputText pSize="small" />
+      <p-inputicon class="pi pi-search" />
+    </p-iconfield>
+  </div>
+  <ul class="flex gap-2 text-[1.1rem] text-gray-800">
+    <!-- <p-button icon="pi pi-search" variant="outlined" rounded="true" severity="secondary" size="small"/> -->
+    @for (item of navMenu(); track $index) {
+    <li>
+      <p-button
+        [icon]="item.icon"
+        variant="outlined"
+        severity="secondary"
+        size="small"
+        [label]="item.title"
+      />
+    </li>
+    }
+  </ul>
+</header>

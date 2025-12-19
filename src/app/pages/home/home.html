@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class=" pt-5">
+    <div class="mx-auto max-w-150 flex justify-between items-center bg-amber-50 py-1 px-3 rounded-2xl">
+        <h2 class="task-title">Task :</h2>
+        <p-button size="small" variant="outlined" severity="success" label="Add Task"/>
+    </div>
+    <p-drawer #drawerRef styleClass="bg-blue-50" [closeButtonProps]="{ severity: 'danger' ,size:'small',variant:'outlined'}"
+ [(visible)]="visible">
+        <ng-template pTemplate="header">
+            <img src="assets/logo.png" alt="" class="max-w-14" />
+        </ng-template>
+        <ul class="flex flex-col gap-2">
+            @for (item of sideMenu(); track $index) {
+                <li>
+                    <p-button [icon]="item.icon" size="small" variant="outlined" severity="secondary" styleClass="w-full justify-start gap-3" [label]="item.title"/>
+                </li>
+            }
+        </ul>
+    </p-drawer>
+    <img width="50" (click)="visible=true" class="cursor-pointer" src="https://assets-v2.lottiefiles.com/a/25ef6df8-1174-11ee-9920-5b8f0f3778b4/cF6PdBQ28c.gif" alt="">
+</div>
+
+
+
+<!-- popup -->
+<div class="card flex justify-center">
+    <p-dialog header="Edit Profile" [modal]="true" [(visible)]="popupVisible" [style]="{ width: '25rem' }">
+        <form [formGroup]="todoForm" class="mt-2">
+            <p-floatlabel variant="on">
+                <input pInputText id="on_label" formControlName="title" autocomplete="off" />
+                <label for="on_label">On Label</label>
+            </p-floatlabel>
+        </form>
+    </p-dialog>
+</div>

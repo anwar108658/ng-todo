@@ -1,6 +1,10 @@
-<div 
-    style="background-image: linear-gradient(white,white,rgba(206, 177, 124, 0.541));"
-    class="h-screen"
-    >
-    <app-navbar></app-navbar>
+<div
+  class="h-dvh flex flex-col"
+  style="background-image: linear-gradient(white, white, rgba(206, 177, 124, 0.541));"
+>
+  <app-navbar></app-navbar>
+
+  <div class="flex-1 overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
 </div>

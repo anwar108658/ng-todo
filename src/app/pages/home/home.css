@@ -1,0 +1,12 @@
+.task-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(
+    90deg,
+    #8C4CA2,
+    #DF7450,
+    #FAA81A
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

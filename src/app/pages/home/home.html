@@ -1,10 +1,10 @@
 <div class=" pt-5">
-    <div class="mx-auto max-w-150 flex justify-between items-center bg-amber-50 py-1 px-3 rounded-2xl">
+    <div class="mx-auto max-w-150 flex justify-between items-center bg-amber-100 py-1 px-3 rounded-2xl">
         <h2 class="task-title">Task :</h2>
-        <p-button size="small" variant="outlined" severity="success" label="Add Task"/>
+        <p-button (onClick)="popupVisible = true" icon="pi pi-plus" size="small" variant="outlined"  label="Add Task"/>
     </div>
     <p-drawer #drawerRef styleClass="bg-blue-50" [closeButtonProps]="{ severity: 'danger' ,size:'small',variant:'outlined'}"
- [(visible)]="visible">
+    [(visible)]="visible">
         <ng-template pTemplate="header">
             <img src="assets/logo.png" alt="" class="max-w-14" />
         </ng-template>
@@ -23,12 +23,39 @@
 
 <!-- popup -->
 <div class="card flex justify-center">
-    <p-dialog header="Edit Profile" [modal]="true" [(visible)]="popupVisible" [style]="{ width: '25rem' }">
-        <form [formGroup]="todoForm" class="mt-2">
-            <p-floatlabel variant="on">
-                <input pInputText id="on_label" formControlName="title" autocomplete="off" />
-                <label for="on_label">On Label</label>
-            </p-floatlabel>
+    <p-dialog header="Todo Form" [modal]="true" [(visible)]="popupVisible" [style]="{ width: '30rem' }">
+        <form [formGroup]="todoForm" class="mt-2 flex flex-col gap-3">
+            <div>
+                <p-floatlabel class="flex-1" variant="on">
+                    <input fluid class="w-full" pSize="small" pInputText id="on_title" formControlName="title" autocomplete="off" />
+                    <label for="on_title">Title</label>
+                </p-floatlabel>
+            </div>
+            <div class="flex gap-2">
+                <p-floatlabel  class="flex-1" variant="on">
+                    <p-select appendTo="body" [options]="selectOption" id="on_priority" formControlName="priority" size="small" class="w-full md:w-56" />
+                    <label for="on_priority">Priority</label>
+                </p-floatlabel>
+                <p-floatlabel variant="on">
+                    <p-datepicker appendTo="body" size="small" showClear inputId="on_deadline" formControlName="deadLine" showIcon iconDisplay="input" />
+                    <label for="on_deadline">Dead Line</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatLabel variant="on">
+                    <textarea rows="3" pSize="small"  pTextarea fluid id="on_comment" formControlName="comment"></textarea>
+                    <label for="on_comment">Comment</label>
+                </p-floatLabel>
+            </div>
+            <div class="flex gap-2 justify-between">
+                <div class="flex gap-2">
+                    <p-button (onClick)="this.todoForm.reset()" variant="outlined" severity="warn" label="Reset" icon="pi pi-undo" size="small"/>
+                    <p-button variant="outlined" severity="primary" label="Add" icon="pi pi-plus" size="small"/>
+                </div>
+                <div>
+                    <p-button (onClick)="popupVisible=false" variant="outlined" severity="danger" label="Close"  size="small"/>
+                </div>
+            </div>
         </form>
     </p-dialog>
 </div>

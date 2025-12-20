@@ -10,3 +10,8 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+:host ::ng-deep .p-dialog-header{
+  padding-top: 8px !important;
+  padding-bottom: 0px !important;
+  color: rgba(161, 77, 8, 0.829);
+}

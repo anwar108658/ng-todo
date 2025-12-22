@@ -21,13 +21,14 @@ import { TextareaModule } from 'primeng/textarea';
 
 export class Home implements OnInit {
   ngOnInit(){
-this.scheduleDaily352()
+  this.scheduleDaily352()
 }
-  scheduleDaily352() {
+
+scheduleDaily352() {
   const now = new Date();
   const target = new Date();
 
-  target.setHours(4, 2, 0, 0);
+  target.setHours(11, 59, 0, 0);
 
   if (target <= now) {
     target.setDate(target.getDate() + 1);
@@ -36,12 +37,11 @@ this.scheduleDaily352()
   const delay = target.getTime() - now.getTime();
 
   setTimeout(() => {
-    console.log('🔥 3:58 task');
-
-    // reschedule for next day
+    console.log('🔥 TASK FIRED AT', new Date().toLocaleTimeString());
     this.scheduleDaily352();
   }, delay);
 }
+
 
   // for sidebar
   visible:boolean = false;
@@ -52,7 +52,7 @@ this.scheduleDaily352()
   ])
 
   // for popup Mod
-  popupVisible:boolean = true;
+  popupVisible:boolean = false;
   todoForm = new FormGroup({
     title:new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(30)]),
     priority:new FormControl('',[Validators.required,Validators.maxLength(10)]),
@@ -61,5 +61,5 @@ this.scheduleDaily352()
   })
 
   // for popup > todoform > select option
-  selectOption=['Hight','Medium','Low']
+  selectOption = ['Hight','Medium','Low']
 }

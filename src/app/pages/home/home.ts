@@ -60,6 +60,14 @@ scheduleDaily352() {
     comment:new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(500)]),
   })
 
-  // for popup > todoform > select option
-  selectOption = ['Hight','Medium','Low']
+  // for popup > todoForm > select option
+  selectOption = ['Hight','Medium','Low'];
+
+
+  addUser(user:any){
+    if (!user.valid) {
+      return console.log("first")
+    }
+    console.log(user.value)
+  }
 }

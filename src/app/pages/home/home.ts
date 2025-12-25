@@ -32,13 +32,13 @@ scheduleDaily352() {
   const now = new Date();
   const target = new Date();
 
-  target.setHours(11, 59, 0, 0);
-
+  target.setHours(17, 54, 0, 0);
   if (target <= now) {
     target.setDate(target.getDate() + 1);
   }
-
+  
   const delay = target.getTime() - now.getTime();
+  console.log(delay,target)
 
   setTimeout(() => {
     console.log('🔥 TASK FIRED AT', new Date().toLocaleTimeString());

@@ -24,7 +24,7 @@
 <!-- popup -->
 <div class="card flex justify-center">
     <p-dialog header="Todo Form" [modal]="true" [(visible)]="popupVisible" [style]="{width: '30rem'}">
-        <form [formGroup]="todoForm" (ngSubmit)="addUser(todoForm)" class="mt-2 flex flex-col gap-3">
+        <form [formGroup]="todoForm" (ngSubmit)="addTodo(todoForm)" class="mt-2 flex flex-col gap-3">
             <div>
                 <p-floatlabel class="flex-1" variant="on">
                     <input fluid class="w-full" pSize="small" pInputText id="on_title" formControlName="title" autocomplete="off" />

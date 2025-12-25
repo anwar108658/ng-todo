@@ -9,6 +9,7 @@ import { IftaLabelModule } from 'primeng/iftalabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TextareaModule } from 'primeng/textarea';
+import { Todos } from '../../service/todos';
 
 
 @Component({
@@ -20,6 +21,9 @@ import { TextareaModule } from 'primeng/textarea';
 
 
 export class Home implements OnInit {
+
+  constructor(private todoService:Todos){}
+
   ngOnInit(){
   this.scheduleDaily352()
 }
@@ -63,11 +67,14 @@ scheduleDaily352() {
   // for popup > todoForm > select option
   selectOption = ['Hight','Medium','Low'];
 
-
-  addUser(user:any){
+  
+  addTodo(user:any){
     if (!user.valid) {
       return console.log("first")
     }
-    console.log(user.value)
+    console.log(user)
+    this.todoService.saveTodo(user.value).subscribe((data) => {
+      console.log(data,"data")
+    })
   }
 }

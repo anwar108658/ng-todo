@@ -70,11 +70,18 @@ scheduleDaily352() {
   
   addTodo(user:any){
     if (!user.valid) {
-      return console.log("first")
+      return console.log("invalid")
     }
+    
     console.log(user)
-    this.todoService.saveTodo(user.value).subscribe((data) => {
-      console.log(data,"data")
+
+    this.todoService.saveTodo(user.value).subscribe({
+      next(value) {
+        console.log(value)
+      },
+      error(err) {
+        console.log("error",err)
+      },
     })
   }
 }
